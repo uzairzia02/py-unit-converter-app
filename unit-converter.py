@@ -1,10 +1,10 @@
 import streamlit as st
 
 st.title("🔄 Unit Converter App")
-st.markdown("### Convert Length, Weight, and Time Instantly!")
+st.markdown("### Convert Length, Weight, Time, and More Instantly!")
 st.write("Welcome to the Unit Converter App. Enter the value and convert it instantly")
 
-category = st.selectbox("⚙️ Select a conversion type", ["Length", "Weight", "Time"])
+category = st.selectbox("⚙️ Select a conversion type", ["Length", "Weight", "Time", "Temperature"])
 
 def convertUnits(category, value, unit):
     if category == "Length":
@@ -26,6 +26,11 @@ def convertUnits(category, value, unit):
             return value / 24
         elif unit == "Days to Hours":
             return value * 24
+    elif category == "Temperature":
+        if unit == "Celsius to Fahrenheit":
+            return (value * 9/5) + 32
+        elif unit == "Fahrenheit to Celsius":
+            return (value - 32) * 5/9
 
 if category == "Length":
     st.markdown("## Length Conversion")
@@ -36,6 +41,9 @@ elif category == "Weight":
 elif category == "Time":
     st.markdown("## Time Conversion")
     unit = st.selectbox("Select a unit", ["Seconds to Minutes", "Minutes to Hours", "Hours to Days", "Days to Hours"])
+elif category =="Temperature":
+    st.markdown("## Temperature Conversion")
+    unit = st.selectbox("Select a unit", ["Celsius to Fahrenheit", "Fahrenheit to Celsius"])
 
 value = st.number_input("## Enter a value to convert")
 if st.button("Convert"):

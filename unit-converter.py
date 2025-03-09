@@ -12,11 +12,19 @@ def convertUnits(category, value, unit):
             return value * 0.621371
         elif unit == "Miles to Kilometers":
             return value / 0.621371
+        elif unit == "Kilometers to Meters":
+            return value * 1000
+        elif unit == "Meters to Kilometers":
+            return value / 1000
     elif category == "Weight":
         if unit == "Kilograms to Pounds":
             return value * 2.20462
         elif unit == "Pounds to Kilograms":
             return value / 2.20462
+        elif unit == "Kilogram to Gram":
+            return value * 1000
+        elif unit == "Gram to Kilogram":
+            return value / 1000
     elif category == "Time":
         if unit == "Seconds to Minutes":
             return value / 60
@@ -34,10 +42,10 @@ def convertUnits(category, value, unit):
 
 if category == "Length":
     st.markdown("## Length Conversion")
-    unit = st.selectbox("Select a unit", ["Kilometers to Miles", "Miles to Kilometers"])
+    unit = st.selectbox("Select a unit", ["Kilometers to Miles", "Miles to Kilometers", "Kilometers to Meters", "Meters to Kilometers" ])
 elif category == "Weight":
     st.markdown("## Weight Conversion")
-    unit = st.selectbox("Select a unit", ["Kilograms to Pounds", "Pounds to Kilograms"])
+    unit = st.selectbox("Select a unit", ["Kilograms to Pounds", "Pounds to Kilograms", "Kilogram to Gram", "Gram to Kilogram"])
 elif category == "Time":
     st.markdown("## Time Conversion")
     unit = st.selectbox("Select a unit", ["Seconds to Minutes", "Minutes to Hours", "Hours to Days", "Days to Hours"])
